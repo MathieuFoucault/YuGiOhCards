@@ -1,6 +1,6 @@
-# YGO
+# YuGiOh! Cards
 
-Ce projet est un monorepo JS, suivant l'architecture React-Express-MySQL telle qu'enseignée à la Wild Code School (v7.1.7) :
+Ce projet est un monorepo JavaScript, suivant l'architecture React-Express-MySQL. Il permet de gérer et d'interagir avec une base de données de cartes Yu-Gi-Oh!, tout en offrant une interface utilisateur dynamique et agréable. Ce projet a été développé dans le cadre de l'apprentissage à la Wild Code School (v7.1.7).
 
 ```mermaid
 sequenceDiagram
@@ -44,7 +44,7 @@ Il est pré-configuré avec un ensemble d'outils pour aider les étudiants à pr
 
 ## Table des Matières
 
-- [YGO](#name)
+- [YuGiOh! Cards](#name)
   - [Table des Matières](#table-des-matières)
   - [Utilisateurs Windows](#utilisateurs-windows)
   - [Installation \& Utilisation](#installation--utilisation)
@@ -96,8 +96,15 @@ my-project/
 │
 ├── server/
 │   ├── app/
+        ├── helpers/
+        ├── middlewares/
 │   │   ├── modules/
+            auth/
+│   │   │   │     ├── authActions.ts
 │   │   │   ├── item/
+                  user/
+│   │   │   │     ├── userActions.ts
+│   │   │   │     └── userRepository.ts
 │   │   │   │   ├── itemActions.ts
 │   │   │   │   └── itemRepository.ts
 │   │   │   └── ...
