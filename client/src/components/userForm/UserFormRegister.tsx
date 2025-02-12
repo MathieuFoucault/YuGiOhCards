@@ -18,7 +18,7 @@ function UserFormRegister({ onSubmit }: UserFormRegisterType) {
     <>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="my-8 w-full max-w-lg p-8 rounded-lg shadow-lg bg-primary mx-12"
+        className="my-8 w-full max-w-lg p-8 rounded-lg shadow-lg bg-gray-800"
       >
         <section className="mb-6">
           <label
@@ -169,7 +169,7 @@ function UserFormRegister({ onSubmit }: UserFormRegisterType) {
         </section>
         <button
           type="submit"
-          className="px-4 py-2 rounded mt-5 btn-submit hover:bg-orange-600"
+          className="px-4 py-2 rounded mt-5 btn-submit bg-yellow-500 hover:bg-orange-600"
         >
           Créer un compte
         </button>
