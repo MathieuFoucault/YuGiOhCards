@@ -1,10 +1,9 @@
-// Load environment variables from .env file
 import "dotenv/config";
 
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
-// Import database client
 import database from "../database/client";
 
 import type { AbstractSeeder } from "../database/fixtures/AbstractSeeder";
@@ -15,14 +14,13 @@ const seed = async () => {
   try {
     const dependencyMap: { [key: string]: AbstractSeeder } = {};
 
-    // Construct each seeder
     const filePaths = fs
       .readdirSync(fixturesPath)
       .filter((filePath: string) => !filePath.startsWith("Abstract"));
 
     for (const filePath of filePaths) {
       const { default: SeederClass } = await import(
-        path.join(fixturesPath, filePath)
+        pathToFileURL(path.join(fixturesPath, filePath)).href
       );
 
       const seeder = new SeederClass() as AbstractSeeder;
@@ -30,10 +28,8 @@ const seed = async () => {
       dependencyMap[SeederClass.toString()] = seeder;
     }
 
-    // Sort seeders according to their dependencies
     const sortedSeeders: AbstractSeeder[] = [];
 
-    // The recursive solver
     const solveDependencies = (n: AbstractSeeder) => {
       for (const DependencyClass of n.dependencies) {
         const dependency = dependencyMap[DependencyClass.toString()];
@@ -48,30 +44,24 @@ const seed = async () => {
       }
     };
 
-    // Solve dependencies for each seeder
     for (const seeder of Object.values(dependencyMap)) {
       solveDependencies(seeder);
     }
 
-    // Truncate tables (starting from the depending ones)
+    const [CardSeeder, RoleSeeder, UserSeeder] = sortedSeeders;
 
-    for (const seeder of sortedSeeders.toReversed()) {
-      // Use delete instead of truncate to bypass foreign key constraint
-      // Wait for the delete promise to complete
+    const customSeederOrder = [RoleSeeder, UserSeeder, CardSeeder];
+
+    for (const seeder of customSeederOrder) {
       await database.query(`delete from ${seeder.table}`);
     }
 
-    // Run each seeder
-
-    for (const seeder of sortedSeeders) {
+    for (const seeder of customSeederOrder) {
       await seeder.run();
 
-      // Wait for all the insertion promises to complete
-      // We do want to wait in order to satisfy dependencies
       await Promise.all(seeder.promises);
     }
 
-    // Close the database connection
     database.end();
 
     console.info(
@@ -83,5 +73,4 @@ const seed = async () => {
   }
 };
 
-// Run the seed function
 seed();
