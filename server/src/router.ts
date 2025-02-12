@@ -1,10 +1,10 @@
 import express from "express";
-import itemActions from "./modules/item/itemActions";
 import { comparePassword, hashPassword } from "./middlewares/argon.middleware";
 import { checkEmail, verifieEmail } from "./middlewares/checkEmail.middleware";
-import { userRegister, adminRegister } from "./middlewares/register.middleware";
+import { adminRegister, userRegister } from "./middlewares/register.middleware";
 import { checkAdminRole, checkUserRole } from "./middlewares/role.middleware";
 import { login, verifyToken } from "./modules/auth/authActions";
+import itemActions from "./modules/item/itemActions";
 import userActions from "./modules/item/user/userActions";
 
 const router = express.Router();
@@ -14,19 +14,19 @@ const router = express.Router();
 /* ************************************************************************* */
 
 router.post(
-	"/api/userformregister",
-	hashPassword,
-	checkEmail,
-	userRegister,
-	userActions.add,
+  "/api/userformregister",
+  hashPassword,
+  checkEmail,
+  userRegister,
+  userActions.add,
 );
 
 router.post(
-	"/api/login/user",
-	verifieEmail,
-	comparePassword,
-	checkUserRole,
-	login,
+  "/api/login/user",
+  verifieEmail,
+  comparePassword,
+  checkUserRole,
+  login,
 );
 
 router.get("/api/items", itemActions.browse);
