@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import userIcone from "../assets/images/UserIcone.png";
+import backgroundRegister from "../assets/images/yugioh_register.png";
 import UserFormRegister from "../components/userForm/UserFormRegister";
 import type { UserFormData } from "../lib/userForm.definitions";
 
@@ -33,22 +34,37 @@ function UserFormPage() {
   };
 
   return (
-    <>
+    <div
+      style={{
+        backgroundImage: `url(${backgroundRegister})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        position: "relative",
+        zIndex: 0,
+      }}
+    >
       <section className=" mt-10">
         <article className="flex flex-col justify-center items-center">
-          <h1 className=" text-4xl font-bold text-black mt-5 mb-5 justify-center">
-            Candidat
+          <h1 className=" text-4xl font-bold text-white mt-2 mb-5 justify-center">
+            Bienvenue
           </h1>
           <img
-            className="w-24  mt-10"
+            className="w-24  mt-2"
             src={userIcone}
             alt="Icone de création de compte"
+            style={{
+              filter: "brightness(0) invert(1)",
+            }}
           />
 
           <UserFormRegister onSubmit={handleUserFormSubmit} />
         </article>
       </section>
-    </>
+    </div>
   );
 }
 
