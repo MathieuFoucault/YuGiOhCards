@@ -5,7 +5,7 @@ const NavBar = () => {
   const navigate = useNavigate();
   const handleUserSignUpClick = () => navigate("/signup/user");
   return (
-    <nav className="flex justify-between items-center p-4 bg-black bg-opacity-65">
+    <nav className="flex justify-between items-center p-4 bg-black bg-opacity-65 z-10 relative">
       <div className="flex-shrink-0">
         <Link to="/">
           <img src={logo} alt="logo-yugioh" className="h-16 w-auto" />
