@@ -13,14 +13,19 @@ const CardsPage = () => {
   }
 
   return (
-    <div>
-      <h1>Liste des Cartes</h1>
-      <div className="cards-container">
+    <div className="bg-gray-800 p-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {cards.length > 0 ? (
           cards.map((card) => (
-            <div key={card.id} className="card">
-              <img src={card.image} alt={`Carte ${card.id}`} />
-              <h2>{`Carte ${card.id}`}</h2>
+            <div
+              key={card.id}
+              className="card bg-gray-800 rounded-lg shadow-lg overflow-hidden"
+            >
+              <img
+                src={card.image}
+                alt={`Carte ${card.id}`}
+                className="w-full h-auto object-cover"
+              />
             </div>
           ))
         ) : (
