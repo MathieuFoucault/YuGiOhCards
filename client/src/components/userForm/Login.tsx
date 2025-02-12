@@ -69,7 +69,7 @@ function Login({ onSubmit }: UserLoginType) {
       <section className="flex justify-end mt-4">
         <button
           type="submit"
-          className="bg-black hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
+          className="bg-yellow-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
         >
           Valider
         </button>
