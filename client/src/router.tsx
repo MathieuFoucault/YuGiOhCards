@@ -13,6 +13,7 @@ const fetchCards = async () => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${getCookie("auth_token")}`,
     },
+    credentials: "include",
   });
 
   if (!response.ok) {
@@ -72,6 +73,7 @@ const router = createBrowserRouter([
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${getCookie("auth_token")}`,
               },
+              credentials: "include",
             },
           );
 

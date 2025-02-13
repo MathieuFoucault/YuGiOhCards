@@ -44,6 +44,7 @@ const AddCardForm = ({ onClose }: AddCardFormProps) => {
         Authorization: `Bearer ${getCookie("auth_token")}`,
       },
       body: JSON.stringify(formData),
+      credentials: "include",
     });
 
     if (response.ok) {

@@ -39,6 +39,7 @@ const CardsPage = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${getCookie("auth_token")}`,
         },
+        credentials: "include",
       },
     );
 
