@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.background-home {
+  background-image: url("../src/assets/images/yugioh_BG.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.background-login {
+  background-image: url("../src/assets/images/yugioh_login.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.background-register {
+  background-image: url("../src/assets/images/yugioh_register.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
