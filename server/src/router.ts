@@ -3,7 +3,7 @@ import { comparePassword, hashPassword } from "./middlewares/argon.middleware";
 import { checkEmail, verifieEmail } from "./middlewares/checkEmail.middleware";
 import { userRegister } from "./middlewares/register.middleware";
 import { checkAdminRole, checkUserRole } from "./middlewares/role.middleware";
-import { login, verifyToken } from "./modules/auth/authActions";
+import { login, logout, verifyToken } from "./modules/auth/authActions";
 import itemActions from "./modules/item/itemActions";
 import userActions from "./modules/item/user/userActions";
 
@@ -36,6 +36,8 @@ router.post(
   checkAdminRole,
   login,
 );
+
+router.get("/api/logout", logout);
 
 router.get("/api/items", itemActions.browse);
 router.get("/api/items/detailsByCard", itemActions.getDetails);
