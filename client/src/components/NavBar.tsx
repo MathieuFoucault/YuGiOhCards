@@ -4,6 +4,20 @@ import logo from "../assets/images/logo.png";
 const NavBar = () => {
   const navigate = useNavigate();
   const handleUserSignUpClick = () => navigate("/signup/user");
+
+  const handleLogout = async () => {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/logout`, {
+      method: "GET",
+      credentials: "include",
+    });
+
+    if (response.ok) {
+      navigate("/");
+    } else {
+      console.error("Erreur lors de la déconnexion");
+    }
+  };
+
   return (
     <nav className="flex justify-between items-center p-4 bg-black bg-opacity-65 z-10 relative">
       <div className="flex-shrink-0">
@@ -22,10 +36,19 @@ const NavBar = () => {
       <div>
         <button
           type="button"
-          className="flex flex-col items-center px-4 py-2 rounded-md bg-gray-800 text-white hover:bg-yellow-500 transition duration-300 "
+          className="flex flex-col items-center mr-2 px-4 py-2 rounded-md bg-gray-800 text-white hover:bg-yellow-500 transition duration-300 "
           onClick={handleUserSignUpClick}
         >
           <span>Inscrivez-vous</span>
+        </button>
+      </div>
+      <div>
+        <button
+          type="button"
+          className="flex flex-col items-center px-4 py-2 rounded-md bg-gray-800 text-white hover:bg-red-500 transition duration-300"
+          onClick={handleLogout}
+        >
+          <span>Se Déconnecter</span>
         </button>
       </div>
     </nav>
