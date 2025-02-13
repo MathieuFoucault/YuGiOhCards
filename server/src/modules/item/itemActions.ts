@@ -22,4 +22,26 @@ const getDetails: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, getDetails };
+const addCard: RequestHandler = async (req, res, next) => {
+  try {
+    const newCard = req.body;
+    const insertId = await itemRepository.create(newCard);
+    res.status(201).json({ insertId });
+  } catch (error) {
+    console.error("Error adding card:", error);
+    next(error);
+  }
+};
+
+const deleteCard: RequestHandler = async (req, res, next) => {
+  const cardId = Number.parseInt(req.params.id);
+  try {
+    await itemRepository.delete(cardId);
+    res.sendStatus(204);
+  } catch (error) {
+    console.error("Error deleting card:", error);
+    next(error);
+  }
+};
+
+export default { browse, getDetails, addCard, deleteCard };

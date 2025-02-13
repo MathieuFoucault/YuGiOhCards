@@ -48,6 +48,10 @@ const router = createBrowserRouter([
         element: <LoginUserPage />,
       },
       {
+        path: "/login/admin",
+        element: <LoginUserPage isAdmin={true} />,
+      },
+      {
         path: "/signup/user",
         element: <UserFormPage />,
       },

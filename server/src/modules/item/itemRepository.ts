@@ -1,5 +1,5 @@
 import db from "../../../database/client";
-import type { Rows } from "../../../database/client";
+import type { Result, Rows } from "../../../database/client";
 
 type Card = {
   id: number;
@@ -24,6 +24,27 @@ class ItemRepository {
       id,
     ]);
     return rows[0] as Card;
+  }
+
+  async create(card: Omit<Card, "id">) {
+    const [result] = await db.query<Result>(
+      "INSERT INTO card (image, french_name, english_name, rarity, level_rank, card_text, atk, def) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      [
+        card.image,
+        card.french_name,
+        card.english_name,
+        card.rarity,
+        card.level_rank,
+        card.card_text,
+        card.atk,
+        card.def,
+      ],
+    );
+    return result.insertId;
+  }
+
+  async delete(id: number) {
+    await db.query("DELETE FROM card WHERE id = ?", [id]);
   }
 }
 

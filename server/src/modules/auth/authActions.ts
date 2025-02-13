@@ -17,7 +17,11 @@ export const login: RequestHandler = async (req, res) => {
       secure: false,
       maxAge: 86400,
     })
-    .json({ userId: userId });
+    .cookie("user_role", user.role_id === 2 ? "Admin" : "User", {
+      httpOnly: false,
+      maxAge: 86400,
+    })
+    .json({ userId: user.id, role: user.role_id });
 };
 
 export const verifyToken = async (
