@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
+import CardDetailPage from "./pages/CardDetailPage";
 import CardsPage from "./pages/CardsPage";
 import HomePage from "./pages/HomePage";
 import LoginUserPage from "./pages/LoginUserPage";
@@ -54,6 +55,34 @@ const router = createBrowserRouter([
         path: "/cards",
         element: <CardsPage />,
         loader: fetchCards,
+      },
+      {
+        path: "/cards/:cardId",
+        element: <CardDetailPage />,
+        loader: async ({ params }) => {
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/items/detailsByCard?cardId=${params.cardId}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${getCookie("auth_token")}`,
+              },
+            },
+          );
+
+          if (!response.ok) {
+            throw new Response(
+              "Erreur lors de la récupération des détails de la carte",
+              {
+                status: response.status,
+              },
+            );
+          }
+
+          const data = await response.json();
+          return data;
+        },
       },
     ],
   },

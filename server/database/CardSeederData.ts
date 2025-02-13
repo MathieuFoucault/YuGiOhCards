@@ -24,7 +24,7 @@ const cardImages = [
   },
   {
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfeW0PDyH9-2E7gGjVTM0xbLB_5ocBwer3A&s",
+      "https://m.media-amazon.com/images/I/51zbY7ES7zL._AC_UF1000,1000_QL80_.jpg",
     french_name: "Dragon Blanc aux Yeux Bleus",
     english_name: "Blue-Eyes White Dragon",
     rarity: "Secret Rare",
@@ -72,7 +72,7 @@ const cardImages = [
   },
   {
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxR_2dHrTMygpmefzvwOqTWL5eA6ZVFxl1hA&s",
+      "https://www.konami.com/kde_cms/eu_publish/uploads/tn23-fr002-600x875.png",
     french_name: "Exodia l'Interdit",
     english_name: "Exodia the Forbidden One",
     rarity: "Ultra Rare",
@@ -95,8 +95,7 @@ const cardImages = [
     def: 1,
   },
   {
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbzqoT-RAAGs70XiyW_1-n-6-px6OA2tVWNw&s",
+    image: "https://www.cards-capital.com/30370/mammoth-graveyard.jpg",
     french_name: "Cimetière de Mammouth",
     english_name: "Mammoth Graveyard",
     rarity: "Commune",
@@ -108,7 +107,7 @@ const cardImages = [
   },
   {
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCmQ-0fA7FM4YCAZSn_szG36BhGC15DSCExQ&s",
+      "https://m.media-amazon.com/images/I/519OyVDj5SL._AC_UF1000,1000_QL80_.jpg",
     french_name: "Epées de Lumière Brûlante",
     english_name: "Swords Of Burning Light",
     rarity: "Commune",
