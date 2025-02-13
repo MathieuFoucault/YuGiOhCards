@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 type Card = {
   id: number;
@@ -17,7 +17,8 @@ const CardsPage = () => {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {cards.length > 0 ? (
           cards.map((card) => (
-            <div
+            <Link
+              to={`/cards/${card.id}`}
               key={card.id}
               className="card bg-gray-800 rounded-lg shadow-lg overflow-hidden"
             >
@@ -26,7 +27,7 @@ const CardsPage = () => {
                 alt={`Carte ${card.id}`}
                 className="w-full h-auto object-cover"
               />
-            </div>
+            </Link>
           ))
         ) : (
           <p>Aucune carte à afficher.</p>

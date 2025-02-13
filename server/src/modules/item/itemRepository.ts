@@ -1,10 +1,30 @@
 import db from "../../../database/client";
+import type { Rows } from "../../../database/client";
 
-const itemRepository = {
-  getAllCards: async () => {
-    const [rows] = await db.query("SELECT * FROM card");
-    return rows;
-  },
+type Card = {
+  id: number;
+  image: string;
+  french_name: string;
+  english_name: string;
+  rarity: string;
+  level_rank: number;
+  card_text: string;
+  atk: number;
+  def: number;
 };
 
-export default itemRepository;
+class ItemRepository {
+  async getAllCards(): Promise<Card[]> {
+    const [rows] = await db.query<Rows>("SELECT * FROM card");
+    return rows as Card[];
+  }
+
+  async getCardById(id: number): Promise<Card | undefined> {
+    const [rows] = await db.query<Rows>("SELECT * FROM card WHERE id = ?", [
+      id,
+    ]);
+    return rows[0] as Card;
+  }
+}
+
+export default new ItemRepository();

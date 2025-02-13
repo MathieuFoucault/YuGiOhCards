@@ -30,6 +30,7 @@ router.post(
 );
 
 router.get("/api/items", itemActions.browse);
+router.get("/api/items/detailsByCard", itemActions.getDetails);
 // router.use(authenticateToken);
 
 export default router;
