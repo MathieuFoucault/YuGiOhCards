@@ -13,6 +13,7 @@ const fetchCards = async () => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${getCookie("auth_token")}`,
     },
+    credentials: "include",
   });
 
   if (!response.ok) {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         element: <LoginUserPage />,
       },
       {
+        path: "/login/admin",
+        element: <LoginUserPage isAdmin={true} />,
+      },
+      {
         path: "/signup/user",
         element: <UserFormPage />,
       },
@@ -68,6 +73,7 @@ const router = createBrowserRouter([
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${getCookie("auth_token")}`,
               },
+              credentials: "include",
             },
           );
 

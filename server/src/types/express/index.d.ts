@@ -1,4 +1,4 @@
-export type {};
+import type { User } from "./models/User";
 
 declare global {
   namespace Express {
@@ -6,7 +6,7 @@ declare global {
       /* ************************************************************************* */
       // Add your custom properties here, for example:
       //
-      // user?: { ... }
+      user?: User;
       /* ************************************************************************* */
     }
   }

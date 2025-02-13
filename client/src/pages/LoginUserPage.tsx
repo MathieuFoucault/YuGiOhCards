@@ -6,15 +6,16 @@ import { useAuth } from "../components/context/AuthContext";
 import Login from "../components/userForm/Login";
 import type { UserFormData } from "../lib/userForm.definitions";
 
-function LoginUserPage() {
+function LoginUserPage({ isAdmin = false }) {
   const navigate = useNavigate();
 
   const { setUserId } = useAuth();
 
   const handleUserLogin = async (loginDataUser: UserFormData) => {
     try {
+      const endpoint = isAdmin ? "admin" : "user";
       const loginUser = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/login/user`,
+        `${import.meta.env.VITE_API_URL}/api/login/${endpoint}`,
         {
           method: "POST",
           headers: {
@@ -62,7 +63,7 @@ function LoginUserPage() {
                 className="text-white mx-auto"
               />
               <h2 className="text-3xl font-extrabold text-white mt-4 mb-5">
-                Connectez-vous
+                {isAdmin ? "Connexion Administrateur" : "Connectez-vous"}
               </h2>
               <p className="mt-2 font-bold text-lg text-white">S'identifier</p>
             </div>
