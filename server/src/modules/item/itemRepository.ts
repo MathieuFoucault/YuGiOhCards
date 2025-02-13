@@ -44,7 +44,8 @@ class ItemRepository {
   }
 
   async delete(id: number) {
-    await db.query("DELETE FROM card WHERE id = ?", [id]);
+    const [result] = await db.query("DELETE FROM card WHERE id = ?", [id]);
+    return result;
   }
 }
 

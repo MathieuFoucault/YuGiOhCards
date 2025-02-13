@@ -58,7 +58,7 @@ export const verifyToken = async (
         .status(401)
         .json({ authorized: false, message: "Utilisateur non trouvé." });
     }
-
+    req.user = verifiedUser;
     next();
   } catch (err) {
     console.error("Erreur lors de la vérification du token :", err);

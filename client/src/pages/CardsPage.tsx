@@ -41,7 +41,10 @@ const CardsPage = () => {
     if (response.ok) {
       window.location.reload();
     } else {
-      console.error("Erreur lors de la suppression de la carte");
+      console.error(
+        "Erreur lors de la suppression de la carte",
+        response.statusText,
+      );
     }
   };
 
