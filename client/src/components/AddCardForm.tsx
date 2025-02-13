@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { formFields } from "../lib/cardDetail.definition";
 
 type AddCardFormProps = {
   onClose: () => void;
@@ -54,6 +53,17 @@ const AddCardForm = ({ onClose }: AddCardFormProps) => {
       console.error("Erreur lors de l'ajout de la carte");
     }
   };
+
+  const formFields = [
+    { name: "image", type: "text", placeholder: "Image URL" },
+    { name: "french_name", type: "text", placeholder: "Nom français" },
+    { name: "english_name", type: "text", placeholder: "Nom anglais" },
+    { name: "rarity", type: "text", placeholder: "Rareté" },
+    { name: "level_rank", type: "number", placeholder: "Niveau de classement" },
+    { name: "card_text", type: "textarea", placeholder: "Texte de la carte" },
+    { name: "atk", type: "number", placeholder: "ATK" },
+    { name: "def", type: "number", placeholder: "DEF" },
+  ];
 
   const renderFormFields = () => {
     return formFields.map((field) => {
