@@ -1,7 +1,6 @@
 import { FaUsers } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import backgroundLogin from "../assets/images/yugioh_login.png";
 import { useAuth } from "../components/context/AuthContext";
 import Login from "../components/userForm/Login";
 import type { UserFormData } from "../lib/userForm.definitions";
@@ -41,20 +40,8 @@ function LoginUserPage({ isAdmin = false }) {
   };
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${backgroundLogin})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        position: "relative",
-        zIndex: 0,
-      }}
-    >
-      <section className="flex flex-col items-center justify-center min-h-screen ">
+    <div className="background-login flex justify-center items-center relative z-0 min-h-screen">
+      <section className="flex flex-col items-center justify-center min-h-screen">
         <section className="py-2 m-10 rounded-md mt-20 bg-gray-800 w-10/12 ">
           <article className="max-w-md mx-auto px-4">
             <div className="text-center">

@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import userIcone from "../assets/images/UserIcone.png";
-import backgroundRegister from "../assets/images/yugioh_register.png";
 import UserFormRegister from "../components/userForm/UserFormRegister";
 import type { UserFormData } from "../lib/userForm.definitions";
 
@@ -34,19 +33,7 @@ function UserFormPage() {
   };
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${backgroundRegister})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        position: "relative",
-        zIndex: 0,
-      }}
-    >
+    <div className="background-register flex justify-center items-center relative z-0">
       <section className=" mt-10">
         <article className="flex flex-col justify-center items-center">
           <h1 className=" text-4xl font-bold text-white mt-2 mb-5 justify-center">
