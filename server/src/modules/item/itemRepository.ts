@@ -20,6 +20,9 @@ class ItemRepository {
   }
 
   async getCardById(id: number): Promise<Card | undefined> {
+    if (Number.isNaN(id)) {
+      throw new Error("ID de carte invalide.");
+    }
     const [rows] = await db.query<Rows>("SELECT * FROM card WHERE id = ?", [
       id,
     ]);

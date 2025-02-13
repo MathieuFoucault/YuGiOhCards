@@ -12,8 +12,11 @@ const browse: RequestHandler = async (req, res, next) => {
 };
 
 const getDetails: RequestHandler = async (req, res, next) => {
+  const cardId = Number.parseInt(req.query.cardId as string);
+  if (Number.isNaN(cardId)) {
+    res.status(400).json({ message: "ID de carte invalide." });
+  }
   try {
-    const cardId = Number.parseInt(req.query.cardId as string);
     const cards = await itemRepository.getCardById(cardId);
     res.json(cards);
   } catch (error) {
@@ -24,7 +27,16 @@ const getDetails: RequestHandler = async (req, res, next) => {
 
 const addCard: RequestHandler = async (req, res, next) => {
   try {
-    const newCard = req.body;
+    const newCard = {
+      image: req.body.image,
+      french_name: req.body.french_name,
+      english_name: req.body.english_name,
+      rarity: req.body.rarity,
+      level_rank: req.body.level_rank,
+      card_text: req.body.card_text,
+      atk: req.body.atk,
+      def: req.body.def,
+    };
     const insertId = await itemRepository.create(newCard);
     res.status(201).json({ insertId });
   } catch (error) {

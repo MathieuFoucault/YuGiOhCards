@@ -41,6 +41,7 @@ router.get("/api/items", itemActions.browse);
 router.get("/api/items/detailsByCard", itemActions.getDetails);
 
 router.delete("/api/items/:id", itemActions.deleteCard);
+router.post("/api/items", itemActions.addCard);
 // router.use(authenticateToken);
 
 export default router;

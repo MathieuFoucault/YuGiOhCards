@@ -1,4 +1,6 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import AddCardForm from "../components/AddCardForm";
 
 type Card = {
   id: number;
@@ -7,6 +9,8 @@ type Card = {
 
 const CardsPage = () => {
   const cards: Card[] = useLoaderData() as Card[];
+  const navigate = useNavigate();
+  const [showForm, setShowForm] = useState(false);
 
   const getCookie = (name: string) => {
     const value = `; ${document.cookie}`;
@@ -39,7 +43,7 @@ const CardsPage = () => {
     );
 
     if (response.ok) {
-      window.location.reload();
+      navigate("/cards");
     } else {
       console.error(
         "Erreur lors de la suppression de la carte",
@@ -86,12 +90,16 @@ const CardsPage = () => {
         )}
       </div>
       {isAdmin() && (
-        <Link
-          to="/cards/add"
-          className="mt-4 inline-block bg-yellow-500 text-black rounded p-2"
-        >
-          Ajouter une carte
-        </Link>
+        <div>
+          <button
+            type="button"
+            onClick={() => setShowForm(!showForm)}
+            className="mt-4 bg-yellow-500 text-black rounded p-2"
+          >
+            {showForm ? "Annuler" : "Ajouter une carte"}
+          </button>
+          {showForm && <AddCardForm onClose={() => setShowForm(false)} />}
+        </div>
       )}
     </div>
   );
