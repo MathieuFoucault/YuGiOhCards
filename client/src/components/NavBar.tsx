@@ -25,7 +25,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="flex flex-col md:flex-row justify-between items-center p-4 bg-black bg-opacity-90 z-10 relative h-20">
+    <nav className="flex flex-col md:flex-row justify-between items-center p-4 bg-black bg-opacity-90 z-10 relative min-h-20">
       <div className="flex-shrink-0 mb-4 md:mb-0">
         <Link to="/">
           <img src={logo} alt="logo-yugioh" className="h-16 w-auto" />
