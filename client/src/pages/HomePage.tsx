@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useAuth } from "../components/context/AuthContext";
 
 const HomePage = () => {
@@ -9,6 +10,7 @@ const HomePage = () => {
     if (userId) {
       navigate("/cards");
     } else {
+      toast.error("Veuillez vous connecter pour accéder aux cartes.");
       navigate("/");
     }
   };

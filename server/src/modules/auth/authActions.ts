@@ -71,5 +71,6 @@ export const verifyToken = async (
 
 export const logout = (req: Request, res: Response) => {
   res.clearCookie("auth_token");
+  res.clearCookie("user_role");
   res.status(200).send({ message: "Déconnexion réussie." });
 };

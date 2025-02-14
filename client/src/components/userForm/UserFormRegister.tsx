@@ -18,9 +18,9 @@ function UserFormRegister({ onSubmit }: UserFormRegisterType) {
     <>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="my-8 w-full max-w-lg p-8 rounded-lg shadow-lg bg-gray-800"
+        className="my-8 w-96 max-w-lg p-8 rounded-lg shadow-lg bg-gray-800"
       >
-        <section className="mb-6">
+        <section className="mb-3">
           <label
             htmlFor="lastName"
             className="block text-sm  text-white font-semibold"
@@ -49,7 +49,7 @@ function UserFormRegister({ onSubmit }: UserFormRegisterType) {
             )}
           </label>
         </section>
-        <section className="mb-6">
+        <section className="mb-3">
           <label
             htmlFor="firstName"
             className="block text-sm  text-white font-semibold"
@@ -78,7 +78,7 @@ function UserFormRegister({ onSubmit }: UserFormRegisterType) {
             )}
           </label>
         </section>
-        <section className="mb-6">
+        <section className="mb-3">
           <label
             htmlFor="email"
             className="block text-sm  text-white font-semibold"
@@ -104,7 +104,7 @@ function UserFormRegister({ onSubmit }: UserFormRegisterType) {
           </label>
         </section>
 
-        <section className="mb-6">
+        <section className="mb-3">
           <label
             htmlFor="password"
             className="block text-sm  text-white font-semibold"
@@ -140,7 +140,7 @@ function UserFormRegister({ onSubmit }: UserFormRegisterType) {
             )}
           </label>
         </section>
-        <section className="mb-6">
+        <section className="mb-3">
           <label
             htmlFor="confirmPassword"
             className="block text-sm  text-white font-semibold"

@@ -34,7 +34,7 @@ function UserFormPage() {
 
   return (
     <div className="background-register flex justify-center items-center relative z-0">
-      <section className=" mt-10">
+      <section className=" my-10">
         <article className="flex flex-col justify-center items-center">
           <h1 className=" text-4xl font-bold text-white mt-2 mb-5 justify-center">
             Bienvenue

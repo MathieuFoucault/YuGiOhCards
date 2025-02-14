@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import logo from "../assets/images/logo.png";
 
 const NavBar = () => {
@@ -13,8 +14,13 @@ const NavBar = () => {
 
     if (response.ok) {
       navigate("/");
+      toast.success("Vous êtes bien déconnecté !");
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
     } else {
       console.error("Erreur lors de la déconnexion");
+      toast.error("Erreur lors de la déconnexion");
     }
   };
 
