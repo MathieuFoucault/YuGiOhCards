@@ -78,7 +78,7 @@ const CardsPage = () => {
                   <button
                     type="button"
                     onClick={() => handleDelete(card.id)}
-                    className="bg-gray-500 hover:bg-red-500 text-white rounded p-2"
+                    className="bg-gray-500 hover:bg-red-500 text-white rounded p-2 w-full mx-auto block text-center"
                   >
                     Supprimer
                   </button>
